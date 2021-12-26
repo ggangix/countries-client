@@ -10,7 +10,7 @@ const Router = () => (
     <Layout>
       <Routes>
         <Route path="/" element={<Countries />} />
-        <Route path="/countries/:countryId" element={<CountryDetail />} />
+        <Route path="/countries/:countryCode" element={<CountryDetail />} />
         <Route component={NotFound} />
       </Routes>
     </Layout>
