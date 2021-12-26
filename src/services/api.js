@@ -2,7 +2,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 module.exports = {
   login: function (username, password) {
-    return fetch(API_URL + "user/login", {
+    return fetch(API_URL + "users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,7 @@ module.exports = {
       });
   },
   register: function (username, password) {
-    return fetch(API_URL + "user/register", {
+    return fetch(API_URL + "users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
