@@ -41,15 +41,16 @@ module.exports = {
     if (page) params += `&page=${page}`;
     if (sort) params += `&sort=${sort}`;
 
-    return fetch(API_URL + "countries?" + params)
-      .headers({
+    return fetch(API_URL + "countries?" + params, {
+      method: "GET",
+      headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      })
-      .then((res) => res.json())
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      }
+    }).then((res) => res.json())
       .then((data) => {
         return data;
-      });
+      })
   },
   createCountry: function (code, name) {
     return fetch(API_URL + "countries", {
