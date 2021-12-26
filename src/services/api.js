@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-module.exports = {
+const Api = {
   login: function (username, password) {
     return fetch(API_URL + "users/login", {
       method: "POST",
@@ -110,3 +110,5 @@ module.exports = {
       });
   }
 };
+
+export default Api;
