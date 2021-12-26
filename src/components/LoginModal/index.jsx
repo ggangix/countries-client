@@ -7,9 +7,6 @@ function LoginModal() {
       <div className="modal-content">
         <div className="modal-header">
           <h4 className="modal-title">Login</h4>
-          <button type="button" className="close" data-dismiss="modal">
-            &times;
-          </button>
         </div>
         <div className="modal-body">
           <form>
@@ -31,9 +28,7 @@ function LoginModal() {
                 placeholder="Enter password"
               />
             </div>
-            <button type="submit" className="btn btn-primary">
-              Submit
-            </button>
+            <button type="submit">Login</button>
           </form>
         </div>
       </div>
