@@ -33,15 +33,26 @@ module.exports = {
         return data;
       });
   },
-  getCountries: function (code, size, limit, page, sort) {
+  getCountries: function (size, limit, page, sort) {
     let params = "";
-    if (code) params += `code=${code}`;
     if (size) params += `&size=${size}`;
     if (limit) params += `&limit=${limit}`;
     if (page) params += `&page=${page}`;
     if (sort) params += `&sort=${sort}`;
 
-    return fetch(API_URL + "countries?" + params, {
+    return fetch(`${API_URL}countries/?${params}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      }
+    }).then((res) => res.json())
+      .then((data) => {
+        return data;
+      })
+  },
+  getCountryByCode: function (code) {
+    return fetch(`${API_URL}countries/${code}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -69,15 +80,15 @@ module.exports = {
         return data;
       });
   },
-  updateCountry: function (code, name) {
-    return fetch(API_URL + "countries/" + code, {
+  updateCountry: function (country) {
+    return fetch(`${API_URL}countries/${country.code}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify({
-        name: name,
+        ...country
       }),
     })
       .then((res) => res.json())
