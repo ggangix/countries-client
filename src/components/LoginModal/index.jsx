@@ -6,13 +6,21 @@ function LoginModal() {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
+  const [isLogin, setIsLogin] = React.useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Api.login(username, password)
+    const call = {
+      register: Api.register(username, password),
+      login: Api.login(username, password),
+    };
+    call[isLogin ? "login" : "register"]
       .then((data) => {
         console.log(data);
-        if (data.message !== "User logged in") {
+        if (
+          data.message !== "User logged in" &&
+          data.message !== "User created"
+        ) {
           return setError(data.message);
         }
         if (data.token) localStorage.setItem("token", data.token);
@@ -27,7 +35,7 @@ function LoginModal() {
     <div id="login-modal" className="modal">
       <div className="modal-content">
         <div className="modal-header">
-          <h4 className="modal-title">Login</h4>
+          <h4 className="modal-title">{isLogin ? "Login" : "Signup"}</h4>
         </div>
         {error && <div className="error">{error}</div>}
         <div className="modal-body">
@@ -56,6 +64,9 @@ function LoginModal() {
               Login
             </button>
           </form>
+          <span onClick={() => setIsLogin(!isLogin)} className="signup-switch">
+            {isLogin ? "Don't have an account?" : "Already have an account?"}
+          </span>
         </div>
       </div>
     </div>
