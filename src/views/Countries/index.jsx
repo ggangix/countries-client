@@ -14,7 +14,6 @@ function Countries() {
   }, []);
 
   const filteredCountries = useMemo(() => {
-    console.log(countries);
     if (countries.length === 0) return [];
     return countries.filter((country) => {
       return country.name.toLowerCase().includes(search.toLowerCase());
@@ -25,7 +24,7 @@ function Countries() {
     setSearch(e.target.value);
   }, []);
 
-  const getAllCountries = async (username) => {
+  const getAllCountries = async () => {
     try {
       const countries = await Api.getCountries();
       setCountries(countries);
