@@ -1,0 +1,30 @@
+.country-detail {
+  text-align: center;
+  font-size: 24px;
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    // center
+    justify-content: center;
+    align-items: center;
+    input {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    button {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 2rem;
+      font-size: 2rem;
+      width: 100%;
+    }
+    label {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
